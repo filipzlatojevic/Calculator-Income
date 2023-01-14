@@ -1,10 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
-import { TableRow } from '../components';
-import Button from '../components/Button';
+import { TableRow, Button, Input, Select } from '../components';
 import calcHouse from '../../public/assets/calculator-house.png';
 import logo from '../../public/assets/logo.png';
 
@@ -100,28 +100,10 @@ function Calculator() {
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                   <span className="text-gray-500 sm:text-sm">$</span>
                 </div>
-                <input
-                  type="number"
-                  name="income"
-                  id="income"
-                  min="0"
-                  value={inputValue}
-                  onChange={e => setInputValue(e.target.value)}
-                  className="outline-none block py-[7px] w-full rounded-md border border-gray-300 pl-7 sm:pr-[105px] pr-[90px] focus:border-btnGreen focus:ring-btnGreen sm:text-sm"
-                  placeholder="0.00"
-                  required
-                />
+                <Input value={inputValue} onChange={e => setInputValue(e.target.value)} />
+
                 <div className="absolute inset-y-0 right-0 flex items-center">
-                  <select
-                    value={selectedOption}
-                    onChange={e => setSelectedOption(e.target.value)}
-                    className="outline-none focus:border-btnGreen focus:border focus:ring-btnGreen h-full 
-                    rounded-md bg-transparent py-0 sm:pl-2 sm:pr-1 text-gray-500 text-sm">
-                    <option value="1">Weekly</option>
-                    <option value="2">Fortnightly</option>
-                    <option value="4">Monthly</option>
-                    <option value="48">Annually</option>
-                  </select>
+                  <Select value={selectedOption} onChange={e => setSelectedOption(e.target.value)} />
                 </div>
               </div>
 
@@ -162,22 +144,17 @@ function Calculator() {
           {resultsPage && (
             <>
               <aside className="bg-lightGreen rounded-md w-full min-h-[400px] p-[15px]">
-                <div className="">
-                  <span className="inline-block shadow-md px-[20px] py-[8px] text-[20px] text-gray-600 rounded-md bg-btnGreen">
+                <div className="flex flex-wrap items-center gap-[5px]">
+                  <span className="inline-block shadow-md px-[17px] py-[6px] text-[20px] text-gray-600 rounded-md bg-btnGreen">
                     ${Math.round(grossWeek * (1 - tax) * selectedOptionResults).toLocaleString()}{' '}
                   </span>
-                  <span className="ml-[8px]">
+                  <span>
                     is your net{' '}
-                    <select
+                    <Select
                       value={selectedOptionResults}
                       onChange={handleSelectInResults}
-                      className="underline outline-none cursor-pointer focus:border-btnGreen focus:border focus:ring-btnGreen h-full 
-                    rounded-md bg-transparent py-0 mr-1 text-gray-700">
-                      <option value="1">Weekly</option>
-                      <option value="2">Fortnightly</option>
-                      <option value="4">Monthly</option>
-                      <option value="48">Annually</option>
-                    </select>
+                      moreClass=" underline cursor-pointer border-btnGreen border mr-1 text-gray-700"
+                    />
                     income
                   </span>
                 </div>

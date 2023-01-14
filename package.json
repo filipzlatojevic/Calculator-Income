@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "repository": {
+    "url": "git+https://github.com/filipzlatojevic/Calculator-Income.git"
+  },
   "scripts": {
-    "build": "webpack --config webpack.prod.js",
+    "buildFirst": "webpack --config webpack.prod.js",
+    "build": "webpack --mode=development",
     "start": "webpack-dev-server --hot --config webpack.dev.js",
     "lint": "eslint . --fix --max-warnings=0",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
@@ -25,6 +31,7 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "file-loader": "^6.2.0",
+    "gh-pages": "^4.0.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
     "postcss": "^8.4.21",
