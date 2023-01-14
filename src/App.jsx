@@ -1,6 +1,7 @@
 import React from 'react';
 import './app.css';
+import { Calculator } from './pages';
 
-const App = () => <h1 className="text-primary text-orange text-4xl font-bold">Hello world! I am using React</h1>;
+const App = () => <Calculator />;
 
 export default App;

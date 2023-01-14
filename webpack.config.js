@@ -32,6 +32,22 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
+      {
+        test: /\.(gif|png|avif|jpe?g)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/images/',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.html$/,
+        use: ['html-loader'],
+      },
     ],
   },
   plugins: [
