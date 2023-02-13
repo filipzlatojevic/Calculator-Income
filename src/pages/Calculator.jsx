@@ -6,7 +6,6 @@ import React, { useEffect, useState } from 'react';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import { TableRow, Button, Input, Select } from '../components';
 import calcHouse from '../../public/assets/calculator-house.png';
-import logo from '../../public/assets/logo.png';
 
 function Calculator() {
   const [resultsPage, setResultsPage] = useState(false);
@@ -50,8 +49,7 @@ function Calculator() {
 
   return (
     <section className="w-full min-h-[100vh] flex flex-col items-center justify-start sm:px-[30px] px-[10px]">
-      <img className="w-[200px] h-[70px]" src={logo} alt="logo" />
-      <div className="w-full flex items-start justify-center">
+      <div className="w-full mt-[70px] flex items-start justify-center">
         <section className="w-[38px] shrink-0 flex items-center flex-col justify-start gap-[10px]">
           <a
             onClick={() => setResultsPage(false)}
